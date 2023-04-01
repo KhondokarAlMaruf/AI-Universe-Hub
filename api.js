@@ -8,7 +8,7 @@ const loadData = async () => {
 const displayData = (univers) => {
   console.log(univers);
   const universeContainer = document.getElementById("universe-container");
-
+  univers = univers.slice(0, 6);
   univers.forEach((univer) => {
     console.log(univer.image);
     const universDiv = document.createElement("div");
