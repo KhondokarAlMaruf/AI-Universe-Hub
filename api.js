@@ -5,4 +5,15 @@ const loadData = async () => {
   displayData(data.data.tools);
 };
 
+const displayData = (univers) => {
+  console.log(univers);
+  const universeContainer = document.getElementById("universe-container");
+  univers.forEach((univer) => {
+    console.log(univer.image);
+    const universDiv = document.createElement("div");
+    universDiv.classList.add("col");
+
+    universeContainer.appendChild(universDiv);
+  });
+};
 loadData();
