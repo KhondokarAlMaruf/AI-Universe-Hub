@@ -38,5 +38,20 @@ const displayData = (univers) => {
     `;
     universeContainer.appendChild(universDiv);
   });
+
+  // <-------- spinner off ------------->
+  toggleSpinner(false);
 };
+
+const toggleSpinner = (isLoading) => {
+  const spinnerSection = document.getElementById("spinner-section");
+  if (isLoading) {
+    spinnerSection.classList.remove("d-none");
+  } else {
+    spinnerSection.classList.add("d-none");
+  }
+};
+
 loadData();
+// <------------- spinner on ---------->
+toggleSpinner(true);
