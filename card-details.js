@@ -9,7 +9,7 @@ const LoadcardData = async (id) => {
 };
 
 const displayCardData = (cards) => {
-  console.log(cards.input_output_examples);
+  console.log(cards.input_output_examples[0].input);
 
   const modalBody = document.getElementById("modal-body");
   modalBody.innerHTML = `
@@ -106,7 +106,7 @@ const displayCardData = (cards) => {
 
 
 
-            <section class="d-flex flex-col border gap-2">
+            <section class="border p-4">
 
                     <div>
                         <img width="200" height="200"  src="${
@@ -116,13 +116,17 @@ const displayCardData = (cards) => {
                         }" alt="" />
                     </div>
 
-                    <div>
-                       
-                    </div>
+                    <h4>${
+                      cards.input_output_examples[0].input
+                        ? cards.input_output_examples[0].input
+                        : "No Heading"
+                    }</h4>
 
-                    <div>
-                        
-                    </div>
+                    <p>${
+                      cards.input_output_examples[0].output
+                        ? cards.input_output_examples[0].output
+                        : "No Description"
+                    }</p>
 
 
             </section>
