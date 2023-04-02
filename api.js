@@ -15,12 +15,12 @@ const displayData = (univers) => {
   });
 
   const showcard = () => {
-    console.log(univers);
+    // console.log(univers);
     universeContainer.innerHTML = "";
     const cardsToShow = isShowingAllCards ? univers : univers.slice(0, 6);
-    console.log(univers);
+    // console.log(univers);
     cardsToShow.forEach((univer) => {
-      console.log(univer.image);
+      //   console.log(univer.id);
       const universDiv = document.createElement("div");
       universDiv.classList.add("col");
       universDiv.innerHTML = `<div class="card h-100 p-3">
@@ -39,7 +39,7 @@ const displayData = (univers) => {
                                 </div>
                                 </div>
                                 <div class="">
-                                <button><i class="px-2 fa-solid fa-arrow-right"></i></button>
+                                <button  onclick="LoadcardData(${univer.id})"><i class="px-2 fa-solid fa-arrow-right" data-bs-toggle="modal" data-bs-target="#phoneDetailsModal"></i></button>
                                 </div>
                                 
                                 
