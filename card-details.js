@@ -5,14 +5,25 @@ const LoadcardData = async (id) => {
     `;
   const res = await fetch(url);
   const data = await res.json();
+
+  console.log(data);
   displayCardData(data.data);
 };
 
 const displayCardData = (cards) => {
-  console.log(cards.input_output_examples[0].input);
+  console.log(cards);
 
-  const modalBody = document.getElementById("modal-body");
-  modalBody.innerHTML = `
+  if (cards.length == 0) {
+    const modalBody = document.getElementById("modal-body");
+    modalBody.innerHTML = `
+       <h2>API Array is empty, Please next</h2>
+
+       <p>API is working from 10 number cards, Please check</p>
+          
+      `;
+  } else {
+    const modalBody = document.getElementById("modal-body");
+    modalBody.innerHTML = `
 
         <section class="d-flex flex-row p-4 gap-4">
 
@@ -119,13 +130,13 @@ const displayCardData = (cards) => {
                     <h4>${
                       cards.input_output_examples[0].input
                         ? cards.input_output_examples[0].input
-                        : "No Heading"
+                        : "Can you give any example?"
                     }</h4>
 
                     <p>${
                       cards.input_output_examples[0].output
                         ? cards.input_output_examples[0].output
-                        : "No Description"
+                        : "No! Not Yet! Take a break!!!"
                     }</p>
 
 
@@ -135,6 +146,7 @@ const displayCardData = (cards) => {
           
           
       `;
+  }
 };
 
 LoadcardData();
