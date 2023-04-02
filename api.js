@@ -6,14 +6,24 @@ const loadData = async () => {
 };
 
 const displayData = (univers) => {
-  console.log(univers);
   const universeContainer = document.getElementById("universe-container");
-  univers = univers.slice(0, 6);
-  univers.forEach((univer) => {
-    console.log(univer.image);
-    const universDiv = document.createElement("div");
-    universDiv.classList.add("col");
-    universDiv.innerHTML = `<div class="card h-100 p-3">
+
+  let isShowingAllCards = false;
+  document.getElementById("show-all-cards").addEventListener("click", () => {
+    isShowingAllCards = !isShowingAllCards;
+    showcard();
+  });
+
+  const showcard = () => {
+    console.log(univers);
+    universeContainer.innerHTML = "";
+    const cardsToShow = isShowingAllCards ? univers : univers.slice(0, 6);
+    console.log(univers);
+    cardsToShow.forEach((univer) => {
+      console.log(univer.image);
+      const universDiv = document.createElement("div");
+      universDiv.classList.add("col");
+      universDiv.innerHTML = `<div class="card h-100 p-3">
                             <img src="${univer.image}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Features</h5>
@@ -36,11 +46,14 @@ const displayData = (univers) => {
                             </div>
                         </div>
     `;
-    universeContainer.appendChild(universDiv);
-  });
+      universeContainer.appendChild(universDiv);
 
-  // <-------- spinner off ------------->
-  toggleSpinner(false);
+      // <-------- spinner off ------------->
+      toggleSpinner(false);
+    });
+  };
+
+  showcard();
 };
 
 const toggleSpinner = (isLoading) => {
